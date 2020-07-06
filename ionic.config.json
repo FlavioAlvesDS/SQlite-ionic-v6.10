@@ -1,0 +1,7 @@
+{
+  "name": "SQliteIonic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

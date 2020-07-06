@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Flavio p. Alves - SQlite
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ion-title id="title">Cadastro de Alunos </ion-title>
+    <form class="form">
+      <ion-item id="item">
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="text" name="nome" [(ngModel)]="nome"></ion-input>
+      </ion-item>
+      <ion-item id="item">
+        <ion-label position="floating">RM</ion-label>
+        <ion-input type="text" name="rm" [(ngModel)]="rm"></ion-input>
+      </ion-item>
+      <ion-button block color="success" (click)="cadastrarAluno(nome,rm)">Cadastrar Aluno</ion-button>
+      <ion-button expand="full" block color="danger"  (click)="deletarTabela()">Excluir Tabela</ion-button>
+  <ion-button expand="full" block color="success" (click)="criarTabela()">Criar Table</ion-button>
+    </form>
+
+    <ion-title id="title">Tabela de Alunos </ion-title>
+    <ion-item class="tableHeader">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            #
+          </ion-col>
+          <ion-col>
+            Nome
+          </ion-col>
+          <ion-col>
+            RM
+          </ion-col>
+          <ion-col>
+            Ação
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item *ngFor="let aluno of alunos" class="table">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>{{aluno.id}}</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label (click)="alertAlterar('nome',aluno.nome,aluno.id)">{{aluno.nome}}</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label (click)="alertAlterar('rm',aluno.rm,aluno.id)">{{aluno.rm}}</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-icon (click)="deletarAluno(aluno.id)" name="trash"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </div>
+</ion-content>
